@@ -1,0 +1,35 @@
+@import url("font.css");
+@import url("style-responsive.css");
+.navbar {
+    background-color: #66BB6A !important;
+}
+
+.upload-image {
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.upload-image form {
+    /* width: 50%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload-image .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-image .x-ray-heatmap {
+    width: 224px;
+    height: 224px;
+    margin-top: 20px;
+}
