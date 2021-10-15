@@ -5,6 +5,7 @@ import pickle
 from cv2 import imread, resize
 import numpy as np
 from xgboost import XGBClassifier
+import xgboost
 
 def predict(image_name):
     image_path = join(MEDIA_ROOT, "uploads", "x-ray", image_name)
@@ -23,7 +24,6 @@ def load_DNN():
     return pre_trained_model
 
 def load_XGBoost_model():
-    model_path = join(MEDIA_ROOT, "MLModel", "xgb_model.json")
-    xgb_model = XGBClassifier()
-    xgb_model.load_model(model_path)
+    model_path = join(MEDIA_ROOT, "MLModel", "xgb_model.pkl")
+    xgb_model = pickle.load(open(model_path, "rb"))
     return xgb_model

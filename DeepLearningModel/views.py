@@ -15,6 +15,11 @@ class indexView(View):
         if form.is_valid():
             form.save()
             res = predict(form.cleaned_data["image"].name)
-            print(res)
-        return HttpResponse('POST request!')
+            print(form.cleaned_data["image"].name, res)
+            context = {
+                "result": res, 
+                "image_address": form.cleaned_data["image"].name,
+                "form": form
+            }
+            return render(request, "index.html", context)
 # Create your views here.

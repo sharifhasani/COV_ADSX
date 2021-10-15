@@ -14,12 +14,22 @@
                 <i class="fa fa-search"></i>
             </button>
         </form>
-        {% comment %} <div class="result">
-            <img class="x-ray-heatmap" src="{% static 'images/X-Ray-sample.jpg' %}" alt="">
-            <p class="text-danger">
-                Covid-19
-                <i class="fa fa-exclamation-triangle"></i>
-            </p>
-        </div> {% endcomment %}
+        {% if result == 0 %}
+            <div class="result">
+                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/x-ray/{{ image_address }}" alt="">
+                    <p class="text-danger">
+                        Covid-19
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </p>
+            </div> 
+        {% elif result == 1 %}
+            <div class="result">
+                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/x-ray/{{ image_address }}" alt="">
+                    <p class="text-success">
+                        NO Covid
+                        {% comment %} <i class="fa fa-exclamation-triangle"></i> {% endcomment %}
+                    </p>
+            </div> 
+        {% endif %}
     </div>
 {% endblock body %}
