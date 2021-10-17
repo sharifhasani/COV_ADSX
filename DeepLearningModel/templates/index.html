@@ -16,7 +16,7 @@
         </form>
         {% if result == 0 %}
             <div class="result">
-                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/x-ray/{{ image_address }}" alt="">
+                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
                     <p class="text-danger">
                         Covid-19
                         <i class="fa fa-exclamation-triangle"></i>
@@ -24,7 +24,7 @@
             </div> 
         {% elif result == 1 %}
             <div class="result">
-                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/x-ray/{{ image_address }}" alt="">
+                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
                     <p class="text-success">
                         NO Covid
                         {% comment %} <i class="fa fa-exclamation-triangle"></i> {% endcomment %}

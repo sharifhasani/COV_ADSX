@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .forms import XRayImageForm
-from .ml import predict
+from .ml import predict, save_and_display_gradcam
 
 class indexView(View):
     def get(self, request, *args, **kwargs):
