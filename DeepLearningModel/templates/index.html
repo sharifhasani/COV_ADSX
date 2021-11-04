@@ -1,35 +1,45 @@
-{% extends 'base_layout.html' %}
-
-{% block body %}
+{% extends 'base_layout.html' %} {% block body %}
 
 
 
-    <div class="upload-image">
+<div class="upload-image">
     {% load static %}
-        <img src="{% static 'images/index.png' %}" alt="">
-        <form action="/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-            {{ form.image }}
-            <button class="btn btn-outline-success" type="submit">
+    <img src="{% static 'images/index.png' %}" alt="">
+    <form action="/" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.image }}
+        <button class="btn btn-outline-success" type="submit">
                 <i class="fa fa-search"></i>
             </button>
-        </form>
-        {% if result == 0 %}
-            <div class="result">
-                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
-                    <p class="text-danger">
-                        Covid-19
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </p>
-            </div> 
-        {% elif result == 1 %}
-            <div class="result">
-                <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
-                    <p class="text-success">
-                        NO Covid
-                        {% comment %} <i class="fa fa-exclamation-triangle"></i> {% endcomment %}
-                    </p>
-            </div> 
-        {% endif %}
+    </form>
+    {% if result == 0 %}
+    <div class="result d-flex flex-row">
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <p class="m-0">heatmap</p>
+            <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <p class="m-0">uploaded image</p>
+            <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/{{ image_address }}" alt="">
+        </div>
     </div>
+    <p class="text-danger">
+        The uploaded image has Covid-19 signs.
+        <i class="fa fa-exclamation-triangle"></i>
+    </p>
+    {% elif result == 1 %}
+    <div class="result d-flex flex-row">
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <p class="m-0">heatmap</p>
+            <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/heatmap/{{ image_address }}" alt="">
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <p class="m-0">uploaded image</p>
+            <img class="x-ray-heatmap" src="{{ MEDIA_URL }}media/uploads/x-ray/{{ image_address }}" alt="">
+        </div>
+    </div>
+    <p class="text-success">
+        The uploaded image has no covid-19 signs.
+    </p>
+    {% endif %}
+</div>
 {% endblock body %}
